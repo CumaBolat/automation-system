@@ -93,8 +93,9 @@ public class AdminLogin {
 					 while (rs.next()) {
 						 
 						 if (rs.getString("email").equals(mail) && rs.getString("passaword").equals(passWord)) {
-							 
-							 MainMenu mm = new MainMenu();
+							 frame.dispose();
+							 AdminPanel adminPanel = new AdminPanel(mail);
+							
 							 
 						 }
 						 
@@ -109,13 +110,8 @@ public class AdminLogin {
 		});
 		frame.getContentPane().add(btnNewButton);
 		
-		
-		
-		
-		
-		
 		JLabel admin = new JLabel();
-		admin.setIcon(new ImageIcon(getClass().getResource("adming login.jpg")));
+		admin.setIcon(new ImageIcon(getClass().getResource("admin login.jpg")));
 		admin.setBounds(0,0,584,372);
 		frame.getContentPane().add(admin);
 
