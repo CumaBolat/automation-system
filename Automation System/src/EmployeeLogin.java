@@ -144,8 +144,8 @@ public class EmployeeLogin {
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel employee = new JLabel();
-		ImageIcon icon = new ImageIcon("employees.png");
-		employee.setIcon(icon);
+		employee.setIcon(new ImageIcon(getClass().getResource("employee login.png")));
+		//employee.setIcon(icon);
 		employee.setBounds(0,0,584,372);
 		frame.getContentPane().add(employee);
 		

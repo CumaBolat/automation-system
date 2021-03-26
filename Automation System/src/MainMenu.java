@@ -104,12 +104,9 @@ public class MainMenu {
 		
 		
 		JLabel kaplan = new JLabel();
-		ImageIcon icon = new ImageIcon("tiger.png");
-		kaplan.setIcon(icon);
+		kaplan.setIcon(new ImageIcon(getClass().getResource("main menu.png")));
 		kaplan.setBounds(0,0,584,372);
 		frame.getContentPane().add(kaplan);
-		
-		//frame.add(new JLabel(new ImageIcon("C:\\Users\\cuma_\\Desktop\\workspace\\Otomation System")));		
 		
 		frame.setVisible(true);
 	}

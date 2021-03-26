@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -100,9 +101,16 @@ public class UserLogin {
 					e1.printStackTrace();
 				}
 				
-				
 			}
 		});
+
+
+		JLabel user = new JLabel();
+		user.setIcon(new ImageIcon(getClass().getResource("user login.png")));
+		user.setBounds(0,0,584,372);
+		frame.getContentPane().add(user);
+		
+
 		frame.getContentPane().add(btnNewButton);
 
 		frame.setVisible(true);

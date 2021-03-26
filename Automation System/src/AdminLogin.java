@@ -115,15 +115,13 @@ public class AdminLogin {
 		
 		
 		JLabel admin = new JLabel();
-		ImageIcon icon = new ImageIcon("peoples.jpg");
-		admin.setIcon(icon);
+		admin.setIcon(new ImageIcon(getClass().getResource("adming login.jpg")));
 		admin.setBounds(0,0,584,372);
 		frame.getContentPane().add(admin);
-		
-		
-		
-		
-		
+
+
+
+
 		frame.setVisible(true);
 	}
 	
