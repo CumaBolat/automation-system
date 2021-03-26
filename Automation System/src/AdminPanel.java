@@ -134,7 +134,30 @@ public class AdminPanel {
 			
 			JButton btnAddBranch = new JButton("Add Branch");
 			btnAddBranch.setBounds(342, 133, 139, 47);
+			btnAddBranch.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					String brach = JOptionPane.showInputDialog("Please enter the branch name");
+					String query = "CREATE TABLE IF NOT EXISTS " + brach + " (" +
+						    "  email TEXT(25)," +
+						    "  passaword TEXT(25))";
+					try {
+						statement = (Statement) con.createStatement();
+						statement.executeUpdate(query);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+			});
+			
 			frame.getContentPane().add(btnAddBranch);
+			
+			
+			
 			
 			JButton btnRemoveBrancj = new JButton("Remove Branch");
 			btnRemoveBrancj.setBounds(342, 235, 139, 47);
@@ -147,7 +170,7 @@ public class AdminPanel {
 					String branch = JOptionPane.showInputDialog("Please enter the branch you want to delete.");
 					try {
 						
-						String sql = "DROP TABLE " + branch + "employees";
+						String sql = "DROP TABLE " + branch ;
 						statement = (Statement) con.createStatement();
 						statement.executeUpdate(sql);
 						JOptionPane.showMessageDialog(null, "Branch deleted succesfully");
