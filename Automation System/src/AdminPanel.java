@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,6 +16,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class AdminPanel {
@@ -26,8 +28,8 @@ public class AdminPanel {
 	private Statement statement = null;
 
 	public AdminPanel(String name) {
-		connect();
 		this.name = name.toUpperCase();
+		connect();
 		initialize();
 	}
 
@@ -55,6 +57,12 @@ public class AdminPanel {
 				
 			}
 		});
+		
+		JLabel admin = new JLabel();
+		admin.setIcon(new ImageIcon(getClass().getResource("background.jpg")));
+		admin.setBounds(0,0,584,372);
+		frame.getContentPane().add(admin);
+		
 		frame.getContentPane().add(btnNewButton);
 		frame.setVisible(true);
 	}
@@ -84,6 +92,8 @@ public class AdminPanel {
 			
 			JButton addEmployee = new JButton("Add Employee");
 			addEmployee.setBounds(101, 133, 139, 47);
+			addEmployee.setBackground(Color.PINK);
+			addEmployee.setForeground(Color.WHITE);
 			addEmployee.addActionListener(new ActionListener() {
 				
 				@Override
@@ -95,7 +105,7 @@ public class AdminPanel {
 					
 					try {
 						
-						PreparedStatement stmt =  (PreparedStatement) con.prepareStatement("INSERT INTO " + brach + "employees(email, passaword) VALUES (?, ?)");
+						PreparedStatement stmt =  (PreparedStatement) con.prepareStatement("INSERT INTO " + brach + "(email, passaword) VALUES (?, ?)");
 						stmt.setString(1, email);
 						stmt.setString(2, passaword);
 						stmt.executeUpdate();
@@ -116,18 +126,33 @@ public class AdminPanel {
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					String email = JOptionPane.showInputDialog("Please enter the email of the employee.");
-					String brach = JOptionPane.showInputDialog("Please enter the branch");
-					try {
+					String brach = "";
+					boolean mail = false;
+					boolean br = false;
+					if (email != null) {
 						
-						PreparedStatement stmt =  (PreparedStatement) con.prepareStatement("DELETE FROM "+ brach + "employees WHERE email = '" + email + "' ");
+						brach = JOptionPane.showInputDialog("Please enter the branch");
+					} else {
+						mail = true;
+						JOptionPane.showMessageDialog(null,"You have to input an Answer!");
 						
-						stmt.executeUpdate();
-						JOptionPane.showMessageDialog(null, "Employee fired succesfuly!");
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
 					}
-					
+					if (brach == null) {
+						br = false;
+						JOptionPane.showMessageDialog(null, "Invalid branch!");
+						
+					} 
+					if (!(br && mail)) {
+						
+						try {
+							PreparedStatement stmt =  (PreparedStatement) con.prepareStatement("DELETE FROM "+ brach + " WHERE email = '" + email + "' ");
+							stmt.executeUpdate();
+							JOptionPane.showMessageDialog(null, "Employee fired succesfuly!");
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							JOptionPane.showMessageDialog(null, "Employee not found!");
+						}
+					}
 				}
 			});
 			frame.getContentPane().add(removeEmployee);
@@ -146,6 +171,7 @@ public class AdminPanel {
 					try {
 						statement = (Statement) con.createStatement();
 						statement.executeUpdate(query);
+						JOptionPane.showMessageDialog(null, "Branch added successfully");
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -155,9 +181,6 @@ public class AdminPanel {
 			});
 			
 			frame.getContentPane().add(btnAddBranch);
-			
-			
-			
 			
 			JButton btnRemoveBrancj = new JButton("Remove Branch");
 			btnRemoveBrancj.setBounds(342, 235, 139, 47);
@@ -185,11 +208,20 @@ public class AdminPanel {
 			frame.getContentPane().add(btnRemoveBrancj);
 			
 			
+			JButton btnNewButton = new JButton("Return to main menu");
+			btnNewButton.setBounds(0, 0, 139, 47);
+			frame.getContentPane().add(btnNewButton);
+			
+			
+			JLabel admin = new JLabel();
+			admin.setIcon(new ImageIcon(getClass().getResource("background.jpg")));
+			admin.setBounds(0,0,584,372);
+			frame.getContentPane().add(admin);
 			
 			
 			frame.setVisible(true);
 		}
-		
+	
 		private void connect() {
 			
 			String url = "jdbc:mysql://localhost:3306/employees";
@@ -207,9 +239,9 @@ public class AdminPanel {
 			}	
 		}
 		
+		
 	}
-	
-	
+
 	private void connect() {
 		
 		String url = "jdbc:mysql://localhost:3306/employees";
