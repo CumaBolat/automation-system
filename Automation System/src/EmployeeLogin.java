@@ -103,16 +103,16 @@ public class EmployeeLogin {
 				String sql = "";
 				switch (branch){
 					case "Ankara": 
-						sql = "SELECT * FROM ankaraemployees";
+						sql = "SELECT * FROM ankara";
 						break;
 					case "Istanbul":
-						sql = "SELECT * FROM istanbulemployees";
+						sql = "SELECT * FROM istanbul";
 						break;
 					case "Mugla":
-						sql = "SELECT * FROM muglaemployees";
+						sql = "SELECT * FROM mugla";
 						break;
 					case "Elbistan":
-						sql = "SELECT * FROM elbistanemployees";
+						sql = "SELECT * FROM elbistan";
 				} 
 				
 				
@@ -128,36 +128,24 @@ public class EmployeeLogin {
 							MainMenu mm = new MainMenu();
 							
 						}
-						
 					}
-					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				
-				
 			}
 		});
 		
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel employee = new JLabel();
-		employee.setIcon(new ImageIcon(getClass().getResource("employee login.png")));
-		//employee.setIcon(icon);
+		employee.setIcon(new ImageIcon(getClass().getResource("background.jpg")));
 		employee.setBounds(0,0,584,372);
 		frame.getContentPane().add(employee);
-		
-		
+
 		frame.setVisible(true);
-		
-		
-		
+
 	}
-	
-	
-	
 	private void connect() {
 		
 		String url = "jdbc:mysql://localhost:3306/employees";
