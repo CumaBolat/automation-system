@@ -35,9 +35,6 @@ public class AdminLogin {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(SystemColor.info);
@@ -95,7 +92,6 @@ public class AdminLogin {
 						 if (rs.getString("email").equals(mail) && rs.getString("passaword").equals(passWord)) {
 							 frame.dispose();
 							 AdminPanel adminPanel = new AdminPanel(mail);
-							
 							 
 						 }
 						 
@@ -111,13 +107,10 @@ public class AdminLogin {
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel admin = new JLabel();
-		admin.setIcon(new ImageIcon(getClass().getResource("admin login.jpg")));
+		admin.setIcon(new ImageIcon(getClass().getResource("background.jpg")));
 		admin.setBounds(0,0,584,372);
 		frame.getContentPane().add(admin);
-
-
-
-
+		
 		frame.setVisible(true);
 	}
 	
