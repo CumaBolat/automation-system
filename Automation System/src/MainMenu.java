@@ -35,7 +35,7 @@ public class MainMenu {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		lblNewLabel = new JLabel("<html> Welcome to<br/>Fuhus Kaplani Furnitures!</html>",  SwingConstants.CENTER);
+		lblNewLabel = new JLabel("<html>Welcome to<br/>Fuhus Kaplani Furnitures!</html>",  SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setBackground(Color.BLACK);
 		lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
@@ -62,7 +62,7 @@ public class MainMenu {
 		
 		JButton btnEmployeeLogin = new JButton("Employee Login");
 		btnEmployeeLogin.setBackground(new Color(0, 0, 0));
-		btnEmployeeLogin.setForeground(Color.WHITE);
+		btnEmployeeLogin.setForeground(Color.white);
 		btnEmployeeLogin.setBounds(214, 183, 127, 41);
 		btnEmployeeLogin.addActionListener(new ActionListener() {
 			
@@ -89,12 +89,23 @@ public class MainMenu {
 				
 			}
 		});
+		
 		frame.getContentPane().add(btnUserLogin);
 		
 		JButton btnSingUp = new JButton("Sing Up");
 		btnSingUp.setForeground(Color.WHITE);
 		btnSingUp.setBackground(Color.BLACK);
 		btnSingUp.setBounds(284, 254, 112, 41);
+		btnSingUp.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				frame.dispose();
+				SignUp su = new SignUp();
+			}
+		});
+		
 		frame.getContentPane().add(btnSingUp);
 		
 		JLabel lblNewLabel_1 = new JLabel("Don't have an account?");
@@ -103,10 +114,10 @@ public class MainMenu {
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		
-		JLabel kaplan = new JLabel();
-		kaplan.setIcon(new ImageIcon(getClass().getResource("main menu.png")));
-		kaplan.setBounds(0,0,584,372);
-		frame.getContentPane().add(kaplan);
+		JLabel menu = new JLabel();
+		menu.setIcon(new ImageIcon(getClass().getResource("background.jpg")));
+		menu.setBounds(0,0,584,372);
+		frame.getContentPane().add(menu);
 		
 		frame.setVisible(true);
 	}
